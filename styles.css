@@ -1,0 +1,102 @@
+/*For devices larger than 400px*/
+@media (min-width: 400px) {}
+/*For devices larger than 550px*/
+@media (min-width: 550px) {}
+
+#rosesred {
+	animation: roses 4s linear infinite alternate;
+	display: inline;
+}
+@keyframes roses {
+	from {background-color: #ff007f;}
+	to {background-color: red;}
+}
+#violetsblue {
+	animation: violets 4s linear infinite alternate;
+	display: inline;
+}
+@keyframes violets {
+	from {background-color: #7f00ff;}
+	to {background-color: blue;}
+}
+.strolling {
+	position: relative;
+	animation: stroll 4s infinite;
+	animation-timing-function: ease-in-out;
+}
+@keyframes stroll {
+	from {left: 0px;}
+	to {left: 100px;}
+}
+
+body {
+	/*background color of charcoal or dark gray*/
+	background-color: #36454f;
+	font-family: Arial, sans-serif;
+}
+
+/*Q2-1*/
+#topheader {
+	background-color: #16252f;
+	/*text color of snow*/
+	color: #fffafa;
+}
+
+/*Q2-2*/
+#container {
+	width: 60%;
+	margin: auto;
+	/*Q2-3*/
+	display: flex;
+	flex-direction: column;
+}
+
+/*Q2-4*/
+#q4 {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background: red;
+	margin-bottom: 5px;
+}
+#q4 img {
+	width: 50%;
+	height: auto;
+}
+#q4 img, p {align-self: center;}
+
+/*Q2-5*/
+#q5 {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+#q5 .topping {
+	padding: 0px 2px;
+	margin: 1px;
+	border: 1px solid black;
+	height: 200px;
+	width: 200px;
+	background-color: white;
+}
+#q5 h3 {
+	text-align: center;
+	background: #16252f;
+	color: #fffafa;
+}
+#q5 h3, h4 {
+	border-bottom: 1px solid black;
+	margin: 0px;
+}
+#q5 ul {
+	list-style: circle inside;
+	padding-left: 0;
+	margin-top: 0;
+}
+#q5 li {margin-bottom: 1rem;}
+
+pre span {
+	padding: 0px 2px;
+	background: white;
+}
