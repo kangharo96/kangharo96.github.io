@@ -11,7 +11,6 @@
     <div class="wrapper">
       <div class="header">Test JSON page</div>
       <!-- <button class="button" onclick="loadData()">Load Some JSON</button> -->
-      <!-- console.log('You haven\'t written a function yet!') -->
       <button class="button" onclick="loadData()">Click me to replace list entries</button>
       <div class="content">
         <ul class="instructions">
@@ -280,37 +279,23 @@
       { "name": "Zimbabwe", "code": "ZW" }
     ]
     console.log("List of countries in the world", countries);
-    const cs_json = JSON.stringify(countries);
-    sessionStorage.setItem("codes",cs_json);
+    sessionStorage.setItem("country_a",JSON.stringify(countries));
 
-    let nl = document.getElementsByClassName("content")[0];
-
-    function displayData() {
-      var string = "";
-      var unique = [];
-      var i = 0;
+    function loadData() {
+      const list = JSON.parse(sessionStorage.getItem("country_a"));
+      const nl = document.querySelector(".instructions");
+      var string = "", unique = [], i = 0, rand = 0;
       while (i < 50) {
-        var rand = Math.floor(Math.random()*countries.length);
-        if (!unique.includes(countries[rand])) {
-          unique[i] = countries[rand];
+        rand = Math.floor(Math.random()*list.length);
+        if (!unique.includes(list[rand].name)) {
+          unique[i] = list[rand].name;
+          string += "<li>"+unique[i]+"</li>";
           i+=1;
         } else {
           // do nothing and redo the loop
         }
       }
-      for (i in unique) {
-        string += "<li>"+unique[i]+"</li>";
-      }
-      return string;
-    }
-
-    function loadData() {
-      const allcs = sessionStorage.getItem("codes");
-      const cs = JSON.parse(allcs);
-      for (i in cs) {
-        countries[i] = cs[i].name;
-      }
-      nl.innerHTML = "<ol>"+ displayData() +"</ol>";
+      nl.innerHTML = "<ol>"+ string +"</ol>";
     }
   </script>
 </body>
