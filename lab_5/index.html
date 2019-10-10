@@ -284,12 +284,12 @@
     function loadData() {
       const list = JSON.parse(sessionStorage.getItem("country_a"));
       const nl = document.querySelector(".instructions");
-      var string = "", unique = [], i = 0, rand = 0;
+      var string = "", i = 0, rand = 0;
+      const names = list.map((i) => i.name);
       while (i < 50) {
-        rand = Math.floor(Math.random()*list.length);
-        if (!unique.includes(list[rand].name)) {
-          unique[i] = list[rand].name;
-          string += "<li>"+unique[i]+"</li>";
+        rand = Math.floor(Math.random()*names.length);
+        if (!string.includes(names[rand])) {
+          string += "<li>"+names[rand]+"</li>";
           i+=1;
         } else {
           // do nothing and redo the loop
