@@ -20,7 +20,22 @@
       fetch('ajax_sample.json')
         .then(res => res.json())
         .then(res => res.map(c => c.code))
-        .then(codes => document.querySelector(".content").innerText = codes);
+        .then(res => {
+          var string = "", i = 0, rand;
+          while (i < 50) {
+            rand = Math.floor(Math.random()*res.length);
+            if (!string.includes(res[rand])) {
+              string += "<li>" + res[rand] + "</li>";
+              i += 1;
+            }
+          }
+          return string;
+        })
+        .then(codes => {
+          document.querySelector(".content").innerText = "<ol>"+codes+"</ol>"
+          document.querySelector(".content").innerHTML = document.querySelector(".content").innerText
+          //replaceList()
+        });
     }
   </script>
 </body>
