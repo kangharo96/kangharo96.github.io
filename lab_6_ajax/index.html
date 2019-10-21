@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Test AJAX page</title>
+  <link rel="stylesheet" type="text/css" href="./lab_styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="wrapper">
+      <div class="header">Test AJAX page</div>
+      <button class="button" onclick="loadData()">Load Some JSON</button>
+      <div class="content"></div>
+      <div class="footer"></div>
+    </div>
+  </div>
+  <script>
+    // Got from https://www.w3resource.com/javascript-exercises/javascript-function-exercise-24.php
+    function sort(arg) {
+      var temp = 0, n = arg.length - 1, list = arg, swap;
+      do {
+        swap = false;
+        for (let i = 0; i < n; i++) {
+          if (list[i] > list[i+1]) {
+            temp = list[i];
+            list[i] = list[i+1];
+            list[i+1] = temp;
+            swap = true;
+          }
+        }
+        n--;
+      } while (swap);
+      return list;
+    }
+
+    function loadData() {
+      fetch('ajax_sample.json')
+        .then(res => res.json())
+        // .then(res => res.map(c => c.name))
+        .then(codes => {
+          var list = [], i = 0, rand, slist, string = "";
+          while (i < 15) {
+            rand = Math.floor(Math.random()*codes.length);
+            if (!list.includes(rand)) {
+              list[i] = rand;
+              i += 1;
+            }
+          }
+          slist = sort(list);
+          for (i in slist) {
+            string += "<li>"+codes[slist[i]].name+", "+codes[slist[i]].code+"</li>";
+          }
+          document.querySelector(".content").innerText = string
+          document.querySelector(".content").innerHTML = "<ol>"+document.querySelector(".content").innerText+"</ol>"
+        });
+    }
+  </script>
+</body>
+
+</html>
