@@ -37,23 +37,25 @@
     function loadData() {
       fetch('ajax_sample.json')
         .then(res => res.json())
-        // .then(res => res.map(c => c.name))
-        .then(codes => {
-          var list = [], i = 0, rand, slist, string = "";
+        .then(res => res.map(c => c.name+", "+c.code))
+        .then(res => {
+          var list = [], i = 0, rand, slist;
           while (i < 15) {
-            rand = Math.floor(Math.random()*codes.length);
+            rand = Math.floor(Math.random()*res.length);
             if (!list.includes(rand)) {
               list[i] = rand;
               i += 1;
             }
           }
-          slist = sort(list);
-          for (i in slist) {
-            let x = slist[i];
-            string += "<li>"+codes[x].name+", "+codes[x].code+"</li>";
+          s_list = sort(list);
+          return s_list.map(i => res[i]);
+        })
+        .then(res => {
+          var string = "";
+          for (i in res) {
+            string += "<li>"+res[i]+"</li>";
           }
-          document.querySelector(".content").innerText = string;
-          document.querySelector(".content").innerHTML = "<ol>"+document.querySelector(".content").innerText+"</ol>";
+          document.querySelector(".content").innerHTML = "<ol>"+string+"</ol>";
         });
     }
   </script>
