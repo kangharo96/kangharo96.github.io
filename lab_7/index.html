@@ -32,7 +32,7 @@
           return res;
         })
         .then(data => {
-          var x = document.querySelector(".content"), un_list = document.createElement("ul");
+          var x = document.querySelector(".content");
           for (i in data) {
             var node = document.createElement("li");
             var textnode = document.createTextNode(data[i].title+", "+data[i].route_id);
