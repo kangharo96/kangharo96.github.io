@@ -49,10 +49,11 @@
           }
           slist = sort(list);
           for (i in slist) {
-            string += "<li>"+codes[slist[i]].name+", "+codes[slist[i]].code+"</li>";
+            let x = slist[i];
+            string += "<li>"+codes[x].name+", "+codes[x].code+"</li>";
           }
-          document.querySelector(".content").innerText = string
-          document.querySelector(".content").innerHTML = "<ol>"+document.querySelector(".content").innerText+"</ol>"
+          document.querySelector(".content").innerText = string;
+          document.querySelector(".content").innerHTML = "<ol>"+document.querySelector(".content").innerText+"</ol>";
         });
     }
   </script>
