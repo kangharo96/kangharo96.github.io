@@ -32,13 +32,11 @@
           return res;
         })
         .then(data => {
-          var x = document.querySelector(".content");
+          var string = "";
           for (i in data) {
-            var node = document.createElement("li");
-            var textnode = document.createTextNode(data[i].title+", "+data[i].route_id);
-            node.appendChild(textnode);
-            x.appendChild(node);
+            string += "<li>"+data[i].title+", "+data[i].route_id+"</li>";
           }
+          document.querySelector(".content").innerHTML = "<ul>"+string+"</ul>";
           return data;
         })
         .then(res => {
