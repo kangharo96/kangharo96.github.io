@@ -39,7 +39,7 @@
         .then(res => res.json())
         .then(res => res.map(c => c.name+", "+c.code))
         .then(res => {
-          var list = [], i = 0, rand, slist;
+          var list = [], i = 0, rand, s_list;
           while (i < 15) {
             rand = Math.floor(Math.random()*res.length);
             if (!list.includes(rand)) {
