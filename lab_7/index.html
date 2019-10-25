@@ -17,12 +17,16 @@
   </div>
   <script>
     function loadData() {
+      // 1
       fetch('https://api.umd.io/v0/bus/routes')
+        // 2
         .then(res => res.json())
+        // 3
         .then(res => {
           console.log(res);
           return res;
         })
+        // 4
         .then(res => {
           res.map(i => {
             if (i.title.includes(i.route_id)) {
@@ -31,6 +35,7 @@
           });
           return res;
         })
+        // 5
         .then(data => {
           var string = "";
           for (i in data) {
@@ -39,6 +44,7 @@
           document.querySelector(".content").innerHTML = "<ul>"+string+"</ul>";
           return data;
         })
+        // 6
         .then(res => {
           var my_route = res.find(function(element) {
             return element.route_id == "143";
@@ -46,6 +52,7 @@
           document.querySelector(".header").innerHTML = "UMD Bus Route "+my_route.route_id+" "+my_route.title;
           return my_route;
         })
+        // 7
         .then(res => console.log(res));
     }
   </script>
