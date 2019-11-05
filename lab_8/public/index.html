@@ -24,8 +24,15 @@
           console.log(res); // logging step to check what we got
           return res;
         })
-        .then(res => res.data.map(c => c.route_id))
-        .then(codes => document.querySelector(".content").innerText = codes);
+        .then(codes => {
+          var string = "";
+          for (i in codes.course_id) {
+            string += '<li>'+codes.course_id[i]+'</li>';
+          }
+          document.querySelector(".content").innerHTML = '<ol>'+string+'</ol>';
+          return codes;
+        })
+        .then(res => console.log(res));
     }
   </script>
 </body>
