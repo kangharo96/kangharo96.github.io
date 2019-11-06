@@ -26,7 +26,7 @@
         })
         .then(codes => {
           var string = "";
-          for (i in codes.course_id) {
+          for (i in codes.course_list) {
             string += '<li>'+codes.course_list[i]+'</li>';
           }
           document.querySelector(".content").innerHTML = '<ol>'+string+'</ol>';
