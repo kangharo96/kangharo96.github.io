@@ -50,11 +50,9 @@ app.get('/api', (req, res) => {
       inst_list = data.filter(function(element) {
         return element.course_id.includes("INST");
       });
-      var course_name = [];
-      //course_id = inst_list.map(i => i.course_id);
-      course_name = inst_list.map(i => i.name);
+      var course_name = inst_list.map(i => i.course_id+': '+i.name);
       console.log(course_name);
-      res.send({ course_id: course_name });
+      res.send({ course_list: course_name });
     })
     .catch((err) => {
       console.log(err);
